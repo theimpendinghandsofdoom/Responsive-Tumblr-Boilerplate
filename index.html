@@ -37,7 +37,7 @@
        
        /* Table of Content
        ==================================================
-       	#Reset & Basics
+           #Reset & Basics
        	#Basic Styles
        	#Site Styles
        	#Typography
@@ -372,6 +372,12 @@
 
         .post {}
         .pages {}
+        .tags ul {
+        	
+        }
+        .tags li {
+        	border: 1px solid #333;
+        }
 
         .text {}
         .photo {}
@@ -744,108 +750,278 @@
     </header>
     <hr/>
 
-    <section id="main" role="main">
+    <section id="main" role="main" class="sixteen columns clearfix">
+        
+        <section class="odd eight columns alpha">
         {block:Posts}
-            
-            {block:Text}
-            <!-- Text -->
-                <article class="post text">
-                    {block:Title}
-                        <h3><a href="{Permalink}">{Title}</a></h3>
-                    {/block:Title}
-
-                    {Body}
-                </article>
-            {/block:Text}
-
-            {block:Photo}
-            <!-- Photo -->
-                <article class="post photo">
-                    <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-
-                    {block:Caption}
-                        <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                </article>
-            {/block:Photo}
-
-            {block:Photoset}
-            <!-- Photo Set -->
-                <article class="post photoset">
-                    {Photoset-500}
-
-                    {block:Caption}
-                        <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                </article>
-            {/block:Photoset}
-
-            {block:Quote}
-            <!-- Quote -->
-                <article class="post quote">
-                    "{Quote}"
-
-                    {block:Source}
-                        <div class="source">{Source}</div>
-                    {/block:Source}
-                </article>
-            {/block:Quote}
-
-            {block:Link}
-            <!-- Link -->
-                <article class="post link">
-                    <a href="{URL}" class="link" {Target}>{Name}</a>
-
-                    {block:Description}
-                        <div class="description">{Description}</div>
-                    {/block:Description}
-                </article>
-            {/block:Link}
-
-            {block:Chat}
-            <!-- Chat -->
-                <article class="post chat">
-                    {block:Title}
-                        <h3><a href="{Permalink}">{Title}</a></h3>
-                    {/block:Title}
-
-                    <ul class="chat">
-                        {block:Lines}
-                            <li class="{Alt} user_{UserNumber}">
-                                {block:Label}
-                                    <span class="label">{Label}</span>
-                                {/block:Label}
-
-                                {Line}
-                            </li>
-                        {/block:Lines}
-                    </ul>
-                </article>
-            {/block:Chat}
-
-            {block:Video}
-            <!-- Video -->
-                <article class="post video">
-                    {Video-500}
-
-                    {block:Caption}
-                        <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                </article>
-            {/block:Video}
-
-            {block:Audio}
-            <!-- Audio -->
-                <article class="post audio">
-                    {AudioPlayerBlack}
-
-                {block:Caption}
-                        <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                </article>
-            {/block:Audio}
+        {block:Odd} 
+        	        
+        	        	{block:Date}
+        	        		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	        	{/block:Date}
+        	            
+        	            {block:Text}
+        	            <!-- Text -->
+        	                <article class="post text">
+        	                    {block:Title}
+        	                        <h3><a href="{Permalink}">{Title}</a></h3>
+        	                    {/block:Title}
+        	
+        	                    {Body}
+        	                </article>
+        	            {/block:Text}
+        	
+        	            {block:Photo}
+        	            <!-- Photo -->
+        	                <article class="post photo">
+        	                    <img class="scale-with-grid" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Photo}
+        	
+        	            {block:Photoset}
+        	            <!-- Photo Set -->
+        	                <article class="post photoset">
+        	                    {Photoset-500}
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Photoset}
+        	
+        	            {block:Quote}
+        	            <!-- Quote -->
+        	                <article class="post quote">
+        	                    "{Quote}"
+        	
+        	                    {block:Source}
+        	                        <div class="source">{Source}</div>
+        	                    {/block:Source}
+        	                </article>
+        	            {/block:Quote}
+        	
+        	            {block:Link}
+        	            <!-- Link -->
+        	                <article class="post link">
+        	                    <a href="{URL}" class="link" {Target}>{Name}</a>
+        	
+        	                    {block:Description}
+        	                        <div class="description">{Description}</div>
+        	                    {/block:Description}
+        	                </article>
+        	            {/block:Link}
+        	
+        	            {block:Chat}
+        	            <!-- Chat -->
+        	                <article class="post chat">
+        	                    {block:Title}
+        	                        <h3><a href="{Permalink}">{Title}</a></h3>
+        	                    {/block:Title}
+        	
+        	                    <ul class="chat">
+        	                        {block:Lines}
+        	                            <li class="{Alt} user_{UserNumber}">
+        	                                {block:Label}
+        	                                    <span class="label">{Label}</span>
+        	                                {/block:Label}
+        	
+        	                                {Line}
+        	                            </li>
+        	                        {/block:Lines}
+        	                    </ul>
+        	                </article>
+        	            {/block:Chat}
+        	
+        	            {block:Video}
+        	            <!-- Video -->
+        	                <article class="post video">
+        	                    {Video-500}
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Video}
+        	
+        	            {block:Audio}
+        	            <!-- Audio -->
+        	                <article class="post audio">
+        	                    {AudioPlayerBlack}
+        	
+        	                {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Audio}
+        	            
+        	            
+        	           {block:HasTags}
+        	               <ul class="tags">
+        	                   {block:Tags}
+        	                       <li>
+        	                           <a href="{TagURL}">{Tag}</a>
+        	                       </li>
+        	                   {/block:Tags}
+        	               </ul>
+        	           {/block:HasTags}
+        	           
+        	           
+        	           {block:ContentSource}
+        	               <a href="{SourceURL}">
+        	                   {lang:Source}:
+        	                   {block:SourceLogo}
+        	                       <img src="{BlackLogoURL}" width="{LogoWidth}"
+        	                       height="{LogoHeight}" alt="{SourceTitle}" />
+        	                   {/block:SourceLogo}
+        	                   {block:NoSourceLogo}
+        	                       {SourceTitle}
+        	                   {/block:NoSourceLogo}
+        	               </a>
+        	           {/block:ContentSource}
+        	           
+        	           
+        	
+        {/block:Odd}
         {/block:Posts}
-
+        </section>
+        
+        <section class="odd eight columns omega">
+        {block:Posts}
+        {block:Even}
+                    {block:Date}
+        	        		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	        	{/block:Date}
+        	            
+        	            {block:Text}
+        	            <!-- Text -->
+        	                <article class="post text">
+        	                    {block:Title}
+        	                        <h3><a href="{Permalink}">{Title}</a></h3>
+        	                    {/block:Title}
+        	
+        	                    {Body}
+        	                </article>
+        	            {/block:Text}
+        	
+        	            {block:Photo}
+        	            <!-- Photo -->
+        	                <article class="post photo">
+        	                    <img class="scale-with-grid" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Photo}
+        	
+        	            {block:Photoset}
+        	            <!-- Photo Set -->
+        	                <article class="post photoset">
+        	                    {Photoset-500}
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Photoset}
+        	
+        	            {block:Quote}
+        	            <!-- Quote -->
+        	                <article class="post quote">
+        	                    "{Quote}"
+        	
+        	                    {block:Source}
+        	                        <div class="source">{Source}</div>
+        	                    {/block:Source}
+        	                </article>
+        	            {/block:Quote}
+        	
+        	            {block:Link}
+        	            <!-- Link -->
+        	                <article class="post link">
+        	                    <a href="{URL}" class="link" {Target}>{Name}</a>
+        	
+        	                    {block:Description}
+        	                        <div class="description">{Description}</div>
+        	                    {/block:Description}
+        	                </article>
+        	            {/block:Link}
+        	
+        	            {block:Chat}
+        	            <!-- Chat -->
+        	                <article class="post chat">
+        	                    {block:Title}
+        	                        <h3><a href="{Permalink}">{Title}</a></h3>
+        	                    {/block:Title}
+        	
+        	                    <ul class="chat">
+        	                        {block:Lines}
+        	                            <li class="{Alt} user_{UserNumber}">
+        	                                {block:Label}
+        	                                    <span class="label">{Label}</span>
+        	                                {/block:Label}
+        	
+        	                                {Line}
+        	                            </li>
+        	                        {/block:Lines}
+        	                    </ul>
+        	                </article>
+        	            {/block:Chat}
+        	
+        	            {block:Video}
+        	            <!-- Video -->
+        	                <article class="post video">
+        	                    {Video-500}
+        	
+        	                    {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Video}
+        	
+        	            {block:Audio}
+        	            <!-- Audio -->
+        	                <article class="post audio">
+        	                    {AudioPlayerBlack}
+        	
+        	                {block:Caption}
+        	                        <div class="caption">{Caption}</div>
+        	                    {/block:Caption}
+        	                </article>
+        	            {/block:Audio}
+        	            
+        	            
+        	           {block:HasTags}
+        	               <ul class="tags">
+        	                   {block:Tags}
+        	                       <li>
+        	                           <a href="{TagURL}">{Tag}</a>
+        	                       </li>
+        	                   {/block:Tags}
+        	               </ul>
+        	           {/block:HasTags}
+        	           
+        	           
+        	           {block:ContentSource}
+        	               <a href="{SourceURL}">
+        	                   {lang:Source}:
+        	                   {block:SourceLogo}
+        	                       <img src="{BlackLogoURL}" alt="{SourceTitle}" />
+        	                   {/block:SourceLogo}
+        	                   {block:NoSourceLogo}
+        	                       {SourceTitle}
+        	                   {/block:NoSourceLogo}
+        	               </a>
+        	           {/block:ContentSource}
+        {/block:Even}
+        {/block:Posts}
+        </section>
+        
+        
         {block:PermalinkPage}
             {block:NoteCount}
             {/block:NoteCount}
@@ -855,14 +1031,14 @@
 
     <footer>
         {block:PreviousPage}
-            <a href="{PreviousPage}">&#171; Previous</a>
+            <a class="button" href="{PreviousPage}">&#171; Previous</a>
         {/block:PreviousPage}
 
         {block:NextPage}
-            <a href="{NextPage}">Next &#187;</a>
+            <a class="button" href="{NextPage}">Next &#187;</a>
         {/block:NextPage}
 
-        <a href="/archive">Archive</a>
+        <a class="button" href="/archive">Archive</a>
     </footer>
 </div>
     <!-- Google CDN Jquery with Tumblr Static Fallback -->
