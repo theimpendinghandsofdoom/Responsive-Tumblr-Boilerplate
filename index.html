@@ -14,14 +14,14 @@
     {block:Description}
         <meta name="description" content="{MetaDescription}" />
     {/block:Description}
-    <meta name="author" content="{text:Blog Author}">
 
     <!-- Tumblr Options -->
-    <meta name="text:Blog Author" content="">
     <meta name="text:Google Analytics ID" content=""/>
+
 
     <!-- Modernizr -->
     <script src="http://static.tumblr.com/l184zuh/1Sllx93x2/modernizr-2.0.6.min.js"></script>
+    
 
     <style>
 
@@ -38,8 +38,8 @@
        /* Table of Content
        ==================================================
            #Reset & Basics
-       	#Basic Styles
-       	#Site Styles
+           #Basic Styles
+           #Site Styles
        	#Typography
        	#Links
        	#Lists
@@ -370,13 +370,33 @@
 
         /* TUMBLR STYLES */
 
-        .post {}
+        .post {
+            background: #f5f5f5;
+            padding: 9px 9px 18px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-box-shadow: 0 1px 3px #bbb;
+                -webkit-box-shadow: 0 1px 3px #bbb;
+            margin-bottom: 3px
+            }
         .pages {}
         .tags ul {
-        	
         }
         .tags li {
-        	border: 1px solid #333;
+            margin-top: 3px;
+            font-size: 12px;
+            background: #676767 repeat-x;
+            display: inline-block;
+            padding: 3px 9px 3px;
+                -moz-border-radius: 15px;
+                -webkit-border-radius: 15px;
+                -moz-box-shadow: 0 1px 3px #333;
+                -webkit-box-shadow: 0 1px 3px #333;
+            position: relative;
+        }
+        .tags a {
+            text-decoration: none;
+            color: #efefef
         }
 
         .text {}
@@ -402,8 +422,7 @@
            PRIMARY STYLES
            Author:
         */
-
-
+        
 
 
 
@@ -839,7 +858,7 @@
         	            {block:Video}
         	            <!-- Video -->
         	                <article class="post video">
-        	                    {Video-500}
+        	                    <div id="video">{Video-500}</div>
         	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
@@ -975,7 +994,7 @@
         	            {block:Video}
         	            <!-- Video -->
         	                <article class="post video">
-        	                    {Video-500}
+        	                    <div id="video">{Video-500}</div>
         	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
@@ -1046,15 +1065,91 @@
     <script>window.jQuery || document.write('<script src="http://static.tumblr.com/l184zuh/M30lxehxp/jquery-1.7.1.min.js"><\/script>')</script>
 
     <!-- Other Javascript -->
+    <script>
+    /*global jQuery */
+/*! 
+* FitVids 1.0
+*
+* Copyright 2011, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
+* Credit to Thierry Koblentz - http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
+* Released under the WTFPL license - http://sam.zoy.org/wtfpl/
+*
+* Date: Thu Sept 01 18:00:00 2011 -0500
+*/
 
-    <!-- Google Analytics -->
-    {block:IfGoogleAnalyticsID}
-      <script>
-        window._gaq = [['_setAccount','{text:Google Analytics ID}'],['_trackPageview'],['_trackPageLoadTime']];
-        Modernizr.load({
-          load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-        });
+(function( $ ){
+
+  $.fn.fitVids = function( options ) {
+    var settings = {
+      customSelector: null
+    }
+    
+    var div = document.createElement('div'),
+        ref = document.getElementsByTagName('base')[0] || document.getElementsByTagName('script')[0];
+        
+      div.className = 'fit-vids-style';
+    div.innerHTML = '&shy;<style>         \
+      .fluid-width-video-wrapper {        \
+         width: 100%;                     \
+         position: relative;              \
+         padding: 0;                      \
+      }                                   \
+                                          \
+      .fluid-width-video-wrapper iframe,  \
+      .fluid-width-video-wrapper object,  \
+      .fluid-width-video-wrapper embed {  \
+         position: absolute;              \
+         top: 0;                          \
+         left: 0;                         \
+         width: 100%;                     \
+         height: 100%;                    \
+      }                                   \
+    </style>';
+                      
+    ref.parentNode.insertBefore(div,ref);
+    
+    if ( options ) { 
+      $.extend( settings, options );
+    }
+    
+    return this.each(function(){
+      var selectors = [
+        "iframe[src*='player.vimeo.com']", 
+        "iframe[src*='www.youtube.com']",  
+        "iframe[src*='www.kickstarter.com']", 
+        "object", 
+        "embed"
+      ];
+      
+      if (settings.customSelector) {
+        selectors.push(settings.customSelector);
+      }
+      
+      var $allVideos = $(this).find(selectors.join(','));
+
+      $allVideos.each(function(){
+        var $this = $(this);
+        if (this.tagName.toLowerCase() == 'embed' && $this.parent('object').length || $this.parent('.fluid-width-video-wrapper').length) { return; } 
+        var height = this.tagName.toLowerCase() == 'object' ? $this.attr('height') : $this.height(),
+            aspectRatio = height / $this.width();
+		if(!$this.attr('id')){
+			var videoID = 'fitvid' + Math.floor(Math.random()*999999);
+			$this.attr('id', videoID);
+		}
+        $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
+        $this.removeAttr('height').removeAttr('width');
+      });
+    });
+  
+  }
+})( jQuery );
+    </script>
+     <script>
+        // Basic FitVids Test
+        $(".video").fitVids();  
       </script>
+    
+
     {block:IfGoogleAnalyticsID}
 
     <!--[if lt IE 7 ]>
