@@ -16,7 +16,7 @@
     {/block:Description}
 
     <!-- Tumblr Options -->
-    <meta name="text:Google Analytics ID" content=""/>
+    <meta name="text:Google Analytics" content="" />
 
 
     <!-- Modernizr -->
@@ -377,13 +377,13 @@
                 -webkit-border-radius: 3px;
                 -moz-box-shadow: 0 1px 3px #bbb;
                 -webkit-box-shadow: 0 1px 3px #bbb;
-            margin-bottom: 3px
+            margin-top: 3px;
+            margin-bottom: 15px;
             }
         .pages {}
         .tags ul {
         }
         .tags li {
-            margin-top: 3px;
             font-size: 12px;
             background: #676767 repeat-x;
             display: inline-block;
@@ -422,8 +422,15 @@
            PRIMARY STYLES
            Author:
         */
-        
-
+        .date {
+        	margin-top: 12px;
+        	margin-bottom: 3px;
+        }
+        .date {
+        	font-size: 12px;
+        	font-weight: bold;
+        	color: #777;
+        }
 
 
         /* HTML5BOILERPLATE NON-SEMANTIC HELPER CLASSES */
@@ -744,9 +751,12 @@
 
     </style>
 </head>
+
 <body>
+
 <div class="container">
     <header class="sixteen columns clearfix">
+    
     	<div class="twelve columns alpha">
         <h1>{Title}</h1>
         {block:Description}
@@ -771,30 +781,34 @@
 
     <section id="main" role="main" class="sixteen columns clearfix">
         
-        <section class="odd eight columns alpha">
+        <section class="left eight columns alpha">
         {block:Posts}
         {block:Odd} 
         	        
-        	        	{block:Date}
-        	        		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
-        	        	{/block:Date}
         	            
         	            {block:Text}
         	            <!-- Text -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post text">
         	                    {block:Title}
         	                        <h3><a href="{Permalink}">{Title}</a></h3>
         	                    {/block:Title}
-        	
+
         	                    {Body}
         	                </article>
         	            {/block:Text}
         	
         	            {block:Photo}
         	            <!-- Photo -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post photo">
         	                    <img class="scale-with-grid" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -803,9 +817,12 @@
         	
         	            {block:Photoset}
         	            <!-- Photo Set -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post photoset">
         	                    {Photoset-500}
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -814,9 +831,12 @@
         	
         	            {block:Quote}
         	            <!-- Quote -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post quote">
         	                    "{Quote}"
-        	
         	                    {block:Source}
         	                        <div class="source">{Source}</div>
         	                    {/block:Source}
@@ -825,9 +845,12 @@
         	
         	            {block:Link}
         	            <!-- Link -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post link">
-        	                    <a href="{URL}" class="link" {Target}>{Name}</a>
-        	
+        	                    <h4 href="{URL}" class="link" {Target}>{Name}</h4>
         	                    {block:Description}
         	                        <div class="description">{Description}</div>
         	                    {/block:Description}
@@ -836,11 +859,14 @@
         	
         	            {block:Chat}
         	            <!-- Chat -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post chat">
         	                    {block:Title}
         	                        <h3><a href="{Permalink}">{Title}</a></h3>
         	                    {/block:Title}
-        	
         	                    <ul class="chat">
         	                        {block:Lines}
         	                            <li class="{Alt} user_{UserNumber}">
@@ -857,9 +883,12 @@
         	
         	            {block:Video}
         	            <!-- Video -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post video">
         	                    <div id="video">{Video-500}</div>
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -868,10 +897,13 @@
         	
         	            {block:Audio}
         	            <!-- Audio -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post audio">
         	                    {AudioPlayerBlack}
-        	
-        	                {block:Caption}
+        	               		{block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
         	                </article>
@@ -887,20 +919,7 @@
         	                   {/block:Tags}
         	               </ul>
         	           {/block:HasTags}
-        	           
-        	           
-        	           {block:ContentSource}
-        	               <a href="{SourceURL}">
-        	                   {lang:Source}:
-        	                   {block:SourceLogo}
-        	                       <img src="{BlackLogoURL}" width="{LogoWidth}"
-        	                       height="{LogoHeight}" alt="{SourceTitle}" />
-        	                   {/block:SourceLogo}
-        	                   {block:NoSourceLogo}
-        	                       {SourceTitle}
-        	                   {/block:NoSourceLogo}
-        	               </a>
-        	           {/block:ContentSource}
+
         	           
         	           
         	
@@ -911,26 +930,29 @@
         <section class="odd eight columns omega">
         {block:Posts}
         {block:Even}
-                    {block:Date}
-        	        		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
-        	        	{/block:Date}
-        	            
         	            {block:Text}
         	            <!-- Text -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post text">
         	                    {block:Title}
         	                        <h3><a href="{Permalink}">{Title}</a></h3>
         	                    {/block:Title}
-        	
+
         	                    {Body}
         	                </article>
         	            {/block:Text}
         	
         	            {block:Photo}
         	            <!-- Photo -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post photo">
         	                    <img class="scale-with-grid" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -939,9 +961,12 @@
         	
         	            {block:Photoset}
         	            <!-- Photo Set -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post photoset">
         	                    {Photoset-500}
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -950,9 +975,12 @@
         	
         	            {block:Quote}
         	            <!-- Quote -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post quote">
         	                    "{Quote}"
-        	
         	                    {block:Source}
         	                        <div class="source">{Source}</div>
         	                    {/block:Source}
@@ -961,9 +989,12 @@
         	
         	            {block:Link}
         	            <!-- Link -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post link">
-        	                    <a href="{URL}" class="link" {Target}>{Name}</a>
-        	
+        	                    <h4 href="{URL}" class="link" {Target}>{Name}</h4>
         	                    {block:Description}
         	                        <div class="description">{Description}</div>
         	                    {/block:Description}
@@ -972,11 +1003,14 @@
         	
         	            {block:Chat}
         	            <!-- Chat -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post chat">
         	                    {block:Title}
         	                        <h3><a href="{Permalink}">{Title}</a></h3>
         	                    {/block:Title}
-        	
         	                    <ul class="chat">
         	                        {block:Lines}
         	                            <li class="{Alt} user_{UserNumber}">
@@ -993,9 +1027,12 @@
         	
         	            {block:Video}
         	            <!-- Video -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post video">
         	                    <div id="video">{Video-500}</div>
-        	
         	                    {block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
@@ -1004,10 +1041,13 @@
         	
         	            {block:Audio}
         	            <!-- Audio -->
+        	            	<date class="date">{block:Date}
+        	            		{Month}, {DayOfMonth}{DayOfMonthSuffix}, {Year}
+        	            	{/block:Date}
+        	            	</date>
         	                <article class="post audio">
         	                    {AudioPlayerBlack}
-        	
-        	                {block:Caption}
+        	               		{block:Caption}
         	                        <div class="caption">{Caption}</div>
         	                    {/block:Caption}
         	                </article>
@@ -1023,19 +1063,9 @@
         	                   {/block:Tags}
         	               </ul>
         	           {/block:HasTags}
+        	            
+        	                    	           
         	           
-        	           
-        	           {block:ContentSource}
-        	               <a href="{SourceURL}">
-        	                   {lang:Source}:
-        	                   {block:SourceLogo}
-        	                       <img src="{BlackLogoURL}" alt="{SourceTitle}" />
-        	                   {/block:SourceLogo}
-        	                   {block:NoSourceLogo}
-        	                       {SourceTitle}
-        	                   {/block:NoSourceLogo}
-        	               </a>
-        	           {/block:ContentSource}
         {/block:Even}
         {/block:Posts}
         </section>
@@ -1048,7 +1078,10 @@
         {/block:PermalinkPage}
     </section>
 
-    <footer>
+    <footer class="sixteen columns clearfix">
+    	<hr/>
+        
+        <section class="fourteen columns alpha">
         {block:PreviousPage}
             <a class="button" href="{PreviousPage}">&#171; Previous</a>
         {/block:PreviousPage}
@@ -1056,10 +1089,15 @@
         {block:NextPage}
             <a class="button" href="{NextPage}">Next &#187;</a>
         {/block:NextPage}
+        </section>
 
-        <a class="button" href="/archive">Archive</a>
+        <section class="two columns omega">
+        	<a class="button" href="/archive">Archive</a>
+       	</section>
     </footer>
 </div>
+
+
     <!-- Google CDN Jquery with Tumblr Static Fallback -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="http://static.tumblr.com/l184zuh/M30lxehxp/jquery-1.7.1.min.js"><\/script>')</script>
@@ -1150,12 +1188,19 @@
       </script>
     
 
-    {block:IfGoogleAnalyticsID}
-
-    <!--[if lt IE 7 ]>
-        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-    <![endif]-->
+    {block:IfGoogleAnalytics}
+            <script type="text/javascript">
+                    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+                    try{
+                            var pageTracker = _gat._getTracker("{text:Google Analytics}");
+                            pageTracker._trackPageview();
+                    } 
+                    catch(err) {}
+            </script>
+    {/block:IfGoogleAnalytics}
 
     </body>
 </html>
